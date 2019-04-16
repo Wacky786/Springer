@@ -59,7 +59,5 @@ module.exports = {
             .assert.urlEquals(homepage.url)
             .end();
     }
-
-
     
 }
