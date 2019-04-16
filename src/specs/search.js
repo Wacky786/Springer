@@ -6,12 +6,12 @@ module.exports = {
 
         homepage
             .navigate()
-            .waitForElementVisible("@searchInput", 5000)
+            .waitForElementVisible("@searchInput", browser.globals.five_sec_timeout)
             .setValue("@searchInput", "big data testing")
-            .waitForElementVisible("@searchButton", 5000)
+            .waitForElementVisible("@searchButton", browser.globals.five_sec_timeout)
             .click("@searchButton");
         search_page
-            .waitForElementVisible("@searchResults", 5000)
+            .waitForElementVisible("@searchResults", browser.globals.five_sec_timeout)
             .assert.urlContains("/search?query=")
             .end();
     },
@@ -22,12 +22,12 @@ module.exports = {
 
         homepage
             .navigate()
-            .waitForElementVisible("@searchInput", 5000)
+            .waitForElementVisible("@searchInput", browser.globals.five_sec_timeout)
             .setValue("@searchInput", "!@£$%^&*()_+}{|:?><~-=][\';/.,`\"")
-            .waitForElementVisible("@searchButton", 5000)
+            .waitForElementVisible("@searchButton", browser.globals.five_sec_timeout)
             .click("@searchButton");
         search_page
-            .waitForElementVisible("@searchResultsEmpty", 5000)
+            .waitForElementVisible("@searchResultsEmpty", browser.globals.five_sec_timeout)
             .assert.urlContains("/search?query=")
             .end();
     },
@@ -38,12 +38,12 @@ module.exports = {
 
         homepage
             .navigate()
-            .waitForElementVisible("@searchInput", 5000)
+            .waitForElementVisible("@searchInput", browser.globals.five_sec_timeout)
             .setValue("[id=query]", "dsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjo")
-            .waitForElementVisible("@searchButton", 5000)
+            .waitForElementVisible("@searchButton", browser.globals.five_sec_timeout)
             .click("@searchButton");
         search_page
-            .waitForElementVisible("@searchResultsEmpty", 5000)
+            .waitForElementVisible("@searchResultsEmpty", browser.globals.five_sec_timeout)
             .assert.urlContains("/search?query=")
             .end();
     },
@@ -53,8 +53,8 @@ module.exports = {
 
         homepage
             .navigate()
-            .waitForElementVisible("@searchInput", 5000)
-            .waitForElementVisible("@searchButton", 5000)
+            .waitForElementVisible("@searchInput", browser.globals.five_sec_timeout)
+            .waitForElementVisible("@searchButton", browser.globals.five_sec_timeout)
             .click("@searchButton")
             .assert.urlEquals(homepage.url)
             .end();
