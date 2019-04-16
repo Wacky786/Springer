@@ -34,5 +34,17 @@ module.exports = {
             .waitForElementVisible("[id=no-results-message]", 5000)
             .assert.urlContains("/search?query=")
             .end();
+    },
+
+    "I search with an empty query string" : browser => {
+        browser
+        .url("https://link.springer.com/")
+        .waitForElementVisible("[id=query]", 5000)
+        .waitForElementVisible("[id=search]", 5000)
+        .click("[id=search]")
+        .assert.urlEquals("https://link.springer.com/")
+        .end();
     }
+
+    
 }
