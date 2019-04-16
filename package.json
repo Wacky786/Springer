@@ -1,0 +1,25 @@
+{
+  "name": "springer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nightwatch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Wacky786@github.com/Wacky786/Springer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wacky786/Springer/issues"
+  },
+  "homepage": "https://github.com/Wacky786/Springer#readme",
+  "dependencies": {
+    "nightwatch": "^1.0.19"
+  },
+  "devDependencies": {
+    "chromedriver": "^2.46.0"
+  }
+}
