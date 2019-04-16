@@ -12,6 +12,9 @@
       "default" : {
         "desiredCapabilities": {
           "browserName": "chrome"
+        },
+        "globals" : {
+          "five_sec_timeout" : 5000
         }
       }
     }
