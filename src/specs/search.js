@@ -1,50 +1,63 @@
 
 module.exports = {
     "I search for a journal" : browser => {
-        browser
-            .url("https://link.springer.com/")
-            .waitForElementVisible("[id=query]", 5000)
-            .setValue("[id=query]", "big data testing")
-            .waitForElementVisible("[id=search]", 5000)
-            .click("[id=search]")
-            .waitForElementVisible("[id=results]", 5000)
+        var homepage = browser.page.homepage();
+        var search_page = browser.page.search_page();
+
+        homepage
+            .navigate()
+            .waitForElementVisible("@searchInput", 5000)
+            .setValue("@searchInput", "big data testing")
+            .waitForElementVisible("@searchButton", 5000)
+            .click("@searchButton");
+        search_page
+            .waitForElementVisible("@searchResults", 5000)
             .assert.urlContains("/search?query=")
             .end();
     },
 
     "I search with non-alpha characters" : browser => {
-        browser
-            .url("https://link.springer.com/")
-            .waitForElementVisible("[id=query]", 5000)
-            .setValue("[id=query]", "!@£$%^&*()_+}{|:?><~-=][\';/.,`\"")
-            .waitForElementVisible("[id=search]", 5000)
-            .click("[id=search]")
-            .waitForElementVisible("[id=no-results-message]", 5000)
+        var homepage = browser.page.homepage();
+        var search_page = browser.page.search_page();
+
+        homepage
+            .navigate()
+            .waitForElementVisible("@searchInput", 5000)
+            .setValue("@searchInput", "!@£$%^&*()_+}{|:?><~-=][\';/.,`\"")
+            .waitForElementVisible("@searchButton", 5000)
+            .click("@searchButton");
+        search_page
+            .waitForElementVisible("@searchResultsEmpty", 5000)
             .assert.urlContains("/search?query=")
             .end();
     },
 
     "I search with a long 1000 character query" : browser => {
-        browser
-            .url("https://link.springer.com/")
-            .waitForElementVisible("[id=query]", 5000)
+        var homepage = browser.page.homepage();
+        var search_page = browser.page.search_page();
+
+        homepage
+            .navigate()
+            .waitForElementVisible("@searchInput", 5000)
             .setValue("[id=query]", "dsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjo")
-            .waitForElementVisible("[id=search]", 5000)
-            .click("[id=search]")
-            .waitForElementVisible("[id=no-results-message]", 5000)
+            .waitForElementVisible("@searchButton", 5000)
+            .click("@searchButton");
+        search_page
+            .waitForElementVisible("@searchResultsEmpty", 5000)
             .assert.urlContains("/search?query=")
             .end();
     },
 
     "I search with an empty query string" : browser => {
-        browser
-        .url("https://link.springer.com/")
-        .waitForElementVisible("[id=query]", 5000)
-        .waitForElementVisible("[id=search]", 5000)
-        .click("[id=search]")
-        .assert.urlEquals("https://link.springer.com/")
-        .end();
-    }
+        var homepage = browser.page.homepage();
 
+        homepage
+            .navigate()
+            .waitForElementVisible("@searchInput", 5000)
+            .waitForElementVisible("@searchButton", 5000)
+            .click("@searchButton")
+            .assert.urlEquals(homepage.url)
+            .end();
+    }
     
 }
