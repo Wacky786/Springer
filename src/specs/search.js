@@ -22,5 +22,17 @@ module.exports = {
             .waitForElementVisible("[id=no-results-message]", 5000)
             .assert.urlContains("/search?query=")
             .end();
+    },
+
+    "I search with a long 1000 character query" : browser => {
+        browser
+            .url("https://link.springer.com/")
+            .waitForElementVisible("[id=query]", 5000)
+            .setValue("[id=query]", "dsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjoaDJIOajdoiasdjoasdjdsfnkdfndsifnsoidfjdsjfoiasdfnoisdanfoisdafnsodfnoidsafnsodfnosdinfosdfnofioidfjsdaiofjsdiofosdifhisdahfisdufishfiuasfoasiJDOSAdjoasjo")
+            .waitForElementVisible("[id=search]", 5000)
+            .click("[id=search]")
+            .waitForElementVisible("[id=no-results-message]", 5000)
+            .assert.urlContains("/search?query=")
+            .end();
     }
 }
